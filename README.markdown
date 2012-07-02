@@ -42,7 +42,6 @@ class ThriftYccTest(ThriftYcc):
 		print("struct %s {"%(st_name))
 	def on_st_end(self):
 		print("}\n")
-
 	def on_st_smp_field(self, index, name, type, thrift_name, vdefault):
 		if thrift_name:
 			type = thrift_name + "." + type
@@ -59,7 +58,6 @@ class ThriftYccTest(ThriftYcc):
 		if tname1:
 			type1 = tname1 + "." + type1
 		print("\t%d:map<%s, %s> %s"%(index, type0, type1, name))
-
         def on_enum_begin(self, enum_name):
                 print("struct %s { enum {"%(enum_name))
         def on_child_enum(self, child_enum, vdefault):
