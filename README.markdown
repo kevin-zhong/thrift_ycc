@@ -34,6 +34,7 @@ thrift 格式化工具；
 
 
 class ThriftYccTest(ThriftYcc):
+
 	def on_def_namespace(self, nm_array):
 		print("namespace cpp %s\n"%(string.join(nm_array, ".")))
 	def on_include(self, pre_path, thrift_name):
