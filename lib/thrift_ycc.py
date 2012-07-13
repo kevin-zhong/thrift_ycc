@@ -95,7 +95,7 @@ class ThriftYcc(object):
                         self._pfc = self._deal_top_line
                         return
 		vdefault = None
-		mdef = re.match("(\w+)\s*=\s*([\d|+|-]+)\s*[,;]?$", line)
+		mdef = re.match("(\w+)\s*=\s*([\d|+|-]+)\s*[,;]?\s*$", line)
 		if mdef:
 			vdefault = mdef.group(2)
 			line = mdef.group(1)
@@ -116,13 +116,13 @@ class ThriftYcc(object):
 			return
 
 		vdefault = None
-		mdef = re.match("(.+)\s*=\s*([\w|\"|+|-]+)\s*[,;]?$", line)
+		mdef = re.match("(.+)\s*=\s*([\w|\"|+|-]+)\s*[,;]?\s*$", line)
 		if mdef:
 			vdefault = mdef.group(2)
-			line = mdef.group(1)
-			## print("line=%s, default=%s"%(line, vdefault))
+			line = mdef.group(1).strip()
+			##print("line=%s, default=%s"%(line, vdefault))
 
-		rc = re.compile("(\d+)\s*:\s*(.+)\s+(\w+)\s*[,;]?$")
+		rc = re.compile("(\d+)\s*:\s*(.+)\s+(\w+)\s*[,;]?\s*$")
 		mress = rc.match(line)
 		if mress == None:
 			self.err_exit("err field=%s"%(line))
